@@ -42,4 +42,37 @@ Le jeu se déroule **en ligne de commande**, avec des invites de la forme `1>`, 
 │   └── main.c          # Boucle de jeu, saisie, affichage et logique générale
 ├── dico.txt            # Fichier de dictionnaire (mots valides)
 └── README.md           # Ce fichier
+```
+---
 
+## 🧪 Exemple
+
+```
+1> ABLE
+2> NOIR
+
+1 : [Deck1 trié]  
+2 : [Deck2 trié]  
+R(ABLE)          // Joue “ABLE” avec 4 lettres du rail  
+-1> E            // Échange la lettre ‘E’  
+r               // Challenge d’un mot de 8 lettres  
+…               // La partie continue jusqu’à ce qu’un deck soit vide
+```
+
+---
+
+## 📄 Licence
+
+Ce projet est sous licence MIT. Voir le fichier [LICENSE](./LICENSE) pour plus d’informations.
+
+---
+
+## ✍️ Auteur
+
+Réalisé par **Neal Giustignano**, étudiant en BUT Informatique.
+
+---
+
+## 🔗 Liens utiles
+
+- Sujet de la SAE : [voir le PDF du sujet](./sujet-s1.pdf)
