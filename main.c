@@ -1,4 +1,6 @@
 /* src/main.c */
+#define _CRT_SECURE_NO_WARNINGS
+#include <time.h>
 #include "chevalet.h"
 
 int main(){
@@ -30,7 +32,7 @@ int main(){
     trierDeck(&Deck1); trierDeck(&Deck2);
 
     const char* Dico = "dico.txt";
-
+    
     /* Initialisation du rail */
     Chevalet rail[NB_MAX_RAIL], inv[NB_MAX_RAIL];
     char m1[16], m2[16];
@@ -80,7 +82,7 @@ int main(){
                         Iterateur it; initIterateur(&Deck2,&it);
                         effacer(&it);
                     }
-                    motsJoues[nbJ++] = strdup(lastMot);
+                    motsJoues[nbJ++] = _strdup(lastMot);
                 }
             }
             challenged = 1;
@@ -93,12 +95,12 @@ int main(){
         char* p = strchr(ligne,'(');
         char* q = strchr(ligne,')');
         if(!p||!q||q<p) continue;
-        int railU = q-p-1;
+        int railU = (int)(q - p - 1);
         if(railU<NB_MIN_RAIL) continue;
 
         char mot[16]={0};
         int idx=0;
-        for(char* t=ligne+1; t<ligne+p; ++t)
+        for (char* t = ligne + 1; t < p; ++t)
             if(*t!=' '&&*t!='\t') mot[idx++]=*t;
         for(char* t=p+1; t<q; ++t) mot[idx++]=*t;
         for(char* t=q+1; *t && *t!=' '&&*t!='\n'; ++t) mot[idx++]=*t;
@@ -113,8 +115,8 @@ int main(){
         { Iterateur it; initIterateur(&Deck1,&it);
           while(!finiIt(&it)){ inclure(&deckAvant,courantIt(&it)); suivantIt(&it);} }
         strcpy(lastMot,mot);
-        lastLen = strlen(mot);
-        lastRailU = railU;
+        lastLen = (int)strlen(mot);
+        lastRailU = (int)railU;
         challenged = 0;
 
         /* Application du coup : insertion simplifiée */
@@ -150,7 +152,7 @@ int main(){
             getchar();
         }
 
-        motsJoues[nbJ++] = strdup(mot);
+        motsJoues[nbJ++] = _strdup(mot);
         creerInverseRail(rail,inv);
     }
 
